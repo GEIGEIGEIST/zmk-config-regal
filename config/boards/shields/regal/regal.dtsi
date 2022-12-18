@@ -28,15 +28,15 @@
     };
 
 
-    kscan0: kscan_0 {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN0";
+        label = "KSCAN";
         
         diode-direction = "col2row"; 
         row-gpios
             = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 
@@ -44,8 +44,8 @@
         compatible = "alps,ec11";
         label = "ENCODER";
         resolution = <4>;
-        a-gpios = <&xiao_d 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
     sensors {
         compatible = "zmk,keymap-sensors";
