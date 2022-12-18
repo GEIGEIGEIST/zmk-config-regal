@@ -1,0 +1,9 @@
+file_format: "1"
+id: regal
+name: REGAL
+type: shield
+url: https://github.com/GEIGEIGEIST/REGAL
+requires: [seeed_xiao_ble]
+features:
+  - keys
+  - encoder
