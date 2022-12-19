@@ -9,7 +9,7 @@
     model = "regal";
 
     chosen {
-        zmk,kscan = &kscan0;
+        zmk,kscan = &kscan;
         zmk,matrix_transform = &transform;
     };
 
@@ -31,26 +31,26 @@
     }; 
 
 
-    kscan0: kscan_composite {
+    kscan0: kscan {
         compatible = "zmk,kscan-composite";
-        label = "KSCAN.0";
+        label = "KSCAN";
         rows = <3>;
         columns = <6>;
 
         matrix {
-            kscan = <&kscan1>;
+            kscan = <&kscan_matrix>;
         };
 
         direct {
-            kscan = <&kscan2>;
+            kscan = <&kscan_enc>;
             column-offset = <5>; 
         };
     };
 
 
-    kscan1: kscan_matrix {
+    kscan_matrix: kscan_matrix {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN.1";
+        label = "KSCAN_MATRIX";
 
         diode-direction = "col2row"; 
 
@@ -61,7 +61,6 @@
             , <&xiao_d 3 GPIO_ACTIVE_HIGH>
             , <&xiao_d 4 GPIO_ACTIVE_HIGH>
             ;
-
         row-gpios
             = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -69,8 +68,8 @@
             ;
     };
 
-    kscan2: kscan_direct {
-        label = "KSCAN.2";
+    kscan_enc: kscan_enc {
+        label = "KSCAN_ENC";
         input-gpios
             = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
