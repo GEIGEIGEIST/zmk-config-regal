@@ -31,7 +31,7 @@
     }; 
 
 
-    kscan0: kscan {
+    kscan: kscan {
         compatible = "zmk,kscan-composite";
         label = "KSCAN";
         rows = <3>;
@@ -69,6 +69,7 @@
     };
 
     kscan_enc: kscan_enc {
+        compatible = "zmk,kscan-gpio-direct";
         label = "KSCAN_ENC";
         input-gpios
             = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
