@@ -25,7 +25,7 @@ label= "BASE"                              ;
 
     &kp N1      &kp N2      &kp N3      &kp N4      &kp X       
     &kp N5      &kp N6      &kp N7      &kp N8      &kp Y
-                &kp 9       &kp 0       &kp HASH    &kp Z      
+                &kp N9      &kp N0      &kp HASH    &kp Z      
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
