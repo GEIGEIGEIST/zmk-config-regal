@@ -14,7 +14,7 @@
     };
 
 
-    transform_transform: transform {
+    transform: transform {
         compatible = "zmk,matrix-transform";
         rows = <3>;
         columns = <6>;
