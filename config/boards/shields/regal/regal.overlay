@@ -7,18 +7,18 @@
 
 / {
     model = "regal";
-    compatible = "geist,regal";
 
     chosen {
         zmk,kscan = &kscan0;
-        zmk,matrix_transform = &default_transform;
+        zmk,matrix_transform = &transform;
     };
 
 
-    default_transform: keymap_transform_0 {
+    transform_transform: transform {
         compatible = "zmk,matrix-transform";
         rows = <3>;
         columns = <6>;
+
 //      | SW01  | SW02  | SW03  | SW04  | TK01  |  EN01  |
 //      | SW05  | SW06  | SW07  | SW08  | TK02  |
 //              | SW09  | SW10  | SW11  | TK03  | 
@@ -37,17 +37,13 @@
         rows = <3>;
         columns = <6>;
 
-
-        // Include the matrix driver
         matrix {
             kscan = <&kscan1>;
         };
 
-
-        // Include the direct GPIO driver...
         direct {
             kscan = <&kscan2>;
-            column-offset = <5>; // ...and shift it to not overlap
+            column-offset = <5>; 
         };
     };
 
