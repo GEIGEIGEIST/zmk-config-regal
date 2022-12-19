@@ -34,7 +34,7 @@
 
     kscan0: kscan_composite {
         compatible = "zmk,kscan-composite";
-        label = "KSCAN0";
+        label = "KSCAN.0";
         rows = <3>;
         columns = <6>;
 
@@ -48,14 +48,14 @@
         // Include the direct GPIO driver...
         direct {
             kscan = <&kscan2>;
-            col-offset = <5>; // ...and shift it to not overlap
+            column-offset = <5>; // ...and shift it to not overlap
         };
     };
 
 
     kscan1: kscan_matrix {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN1";
+        label = "KSCAN.1";
         
         diode-direction = "col2row"; 
 
@@ -75,7 +75,7 @@
     };
 
     kscan2: kscan_direct {
-        label = "KSCAN2";
+        label = "KSCAN.2";
         input-gpios
             = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
