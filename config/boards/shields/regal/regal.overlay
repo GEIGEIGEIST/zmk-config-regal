@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <dt-bindings/zmk/matrix_transform.h>
+include <dt-bindings/zmk/matrix_transform.h>
 
 / {
     model = "regal";
@@ -57,8 +57,6 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN.1";
 
-        rows = <3>;
-        columns = <5>;
         diode-direction = "col2row"; 
 
         col-gpios
