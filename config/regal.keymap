@@ -10,7 +10,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define TVP   0
+#define TVP1  0
 #define TVP2  1
 #define HEAVY 2
 
@@ -22,7 +22,7 @@
 
                 tvp1_layer {
 // ┌───────────────────────────────────┐
-label= "TVP"                           ;
+label= "TVP1"                           ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
 // │           │  MARK IN  │    ROT    │  MARK OUT ││   PLAY    ││  PLY/PSE  │
