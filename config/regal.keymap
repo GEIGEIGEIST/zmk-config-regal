@@ -20,7 +20,7 @@
 
 // ───────────────────────────────────────────────────────────────────────────
 
-                tvp_layer {
+                tvp1_layer {
 // ┌───────────────────────────────────┐
 label= "TVP"                           ;
 // └───────────────────────────────────┘
@@ -50,16 +50,16 @@ label= "TVP2"                          ;
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
 // │     1     │     2     │    ROT    │     4     ││     X     ││  PLY/PSE  │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │     5     │   LEFT    │    PAN    │   RIGHT   ││   ERASER  │
+// │    ---    │   LEFT    │    PAN    │   RIGHT   ││   ERASER  │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
 //             │   COPY    │    DEL    │   PASTE   ││     Z     │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp N1      &kp LS(I)   &kp N3      &kp N4       &kp X        &kp C_PP
-    &kp N5      &kp LS(LEFT) &kp LALT   &kp LS(RIGHT) &kp Y
-                &kp LS(C)    &kp N0      &kp HASH     &kp Z      
+    &kp N1      &kp LS(I)   &kp LS(HOME) &kp LS(O)      &kp X        &kp C_PP
+    &trans      &kp LS(LEFT) &kp LALT   &kp LS(RIGHT) &kp Y
+                &kp LS(C)    &kp N0     &kp LS(V)     &kp Z      
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
@@ -86,8 +86,5 @@ label= "HEAVY"                         ;
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
-
-// ───────────────────────────────────────────────────────────────────────────
-
         };
 };
