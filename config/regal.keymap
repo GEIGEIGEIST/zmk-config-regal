@@ -12,7 +12,6 @@
 
 #define TVP1  0
 #define TVP2  1
-#define HEAVY 2
 
 / {
         keymap {
@@ -22,7 +21,7 @@
 
                 tvp1_layer {
 // ┌───────────────────────────────────┐
-label= "TVP1"                           ;
+label= "TVP1"                          ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
 // │           │  MARK IN  │    ROT    │  MARK OUT ││   PLAY    ││  PLY/PSE  │
@@ -60,29 +59,6 @@ label= "TVP2"                          ;
     &kp N1      &kp LS(I)   &kp LS(HOME) &kp LS(O)      &kp X        &kp C_PP
     &trans      &kp LS(LEFT) &kp LALT   &kp LS(RIGHT) &kp Y
                 &kp LS(C)    &kp N0     &kp LS(V)     &kp Z      
-                        >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
-
-// ───────────────────────────────────────────────────────────────────────────
-
-                heavy_layer {
-// ┌───────────────────────────────────┐
-label= "HEAVY"                         ;
-// └───────────────────────────────────┘
-// ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │     1     │     2     │    ROT    │     4     ││     X     ││  PLY/PSE  │
-// ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │     5     │   LEFT    │    PAN    │   RIGHT   ││   ERASER  │
-// └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │   COPY    │    DEL    │   PASTE   ││     Z     │
-//             └───────────┴───────────┴───────────┘╰───────────╯
- bindings = <
-// ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
-
-    &kp N1      &kp N2      &kp N3      &kp N4       &kp X        &kp C_PP
-    &kp N5      &kp LEFT    &kp LALT    &kp RIGHT    &kp Y
-                &kp N9      &kp N0      &kp HASH     &kp Z      
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
