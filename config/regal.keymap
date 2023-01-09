@@ -33,11 +33,11 @@ label= "TVP1"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp J       &kp I       &kp LC(LALT) &kp O       &kp SPACE    &kp C_PP
-    &lt TVP2 L  &kp LEFT    &kp LALT    &kp RIGHT    &kp Y
+    &kp J       &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
+    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFTn    &kp Y
                 &kp LC(C)   &kp BSPC    &kp LC(V)    &kp Z            
                         >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
                 };
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -56,11 +56,11 @@ label= "TVP2"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp N1      &kp LS(I)   &kp LS(HOME) &kp LS(O)      &kp X        &kp C_PP
-    &trans      &kp LS(LEFT) &kp LALT   &kp LS(RIGHT) &kp Y
+    &kp N1      &kp LS(O)   &kp LS(HOME) &kp LS(I)      &kp X        &kp K_PP
+    &trans      &kp LS(RIGHT) &kp LALT   &kp LS(LEFT) &kp Y
                 &kp LS(C)    &kp N0     &kp LS(V)     &kp Z          
                         >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
                 };
         };
 };
