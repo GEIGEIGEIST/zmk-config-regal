@@ -14,10 +14,28 @@
 #define TVP2  1
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+
+    macros {
+        ab: ab {
+            label = "ab";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp A>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp B>
+                ;
+        };
+
+
+
+ 
+    };
 
 // ───────────────────────────────────────────────────────────────────────────
+
+        keymap {
+                compatible = "zmk,keymap";
 
                 tvp1_layer {
 // ┌───────────────────────────────────┐
@@ -33,7 +51,7 @@ label= "TVP1"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp J       &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
+    &ab         &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp Y
                 &kp LC(C)   &kp BSPC    &kp LC(V)    &kp Z            
                         >;
