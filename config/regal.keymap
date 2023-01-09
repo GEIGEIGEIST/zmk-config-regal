@@ -33,9 +33,9 @@ label= "TVP1"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp J       &kp I       &kp LC(LALT) &kp O       &kp SPACE    &kp C_PP
-    &lt TVP2    &kp LEFT    &kp LALT    &kp RIGHT    &kp Y
-                &kp LC(C)   &kp BSPC    &kp LC(V)    &kp Z      
+    &kp N1      &kp N1      &kp N1     &kp N1        &kp N1       &kp N1
+    &lt TVP2    &kp N1      &kp N1     &kp N1        &kp N1
+                &kp N1      &kp N1     &kp N1        &kp N1     
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
@@ -56,9 +56,9 @@ label= "TVP2"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp N1      &kp LS(I)   &kp LS(HOME) &kp LS(O)      &kp X        &kp C_PP
-    &trans      &kp LS(LEFT) &kp LALT   &kp LS(RIGHT) &kp Y
-                &kp LS(C)    &kp N0     &kp LS(V)     &kp Z      
+    &kp N1      &kp N1      &kp N1      &kp N1       &kp N1       &kp N1
+    &trans      &kp N1      &kp N1      &kp N1       &kp N1
+                &kp N1      &kp N1      &kp N1       &kp N1      
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
                 };
