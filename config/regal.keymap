@@ -34,7 +34,7 @@ label= "TVP1"                          ;
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp J       &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
-    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFTn    &kp Y
+    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp Y
                 &kp LC(C)   &kp BSPC    &kp LC(V)    &kp Z            
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
