@@ -39,6 +39,15 @@
                 ;
         };
 
+        dmac: dmac {
+            label = "d macro";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp D>
+                ;
+        };
+
 
 
  
@@ -65,7 +74,7 @@ label= "TVP1"                          ;
 
     &ab         &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp Y
-                &cd C D   &kp BSPC    &kp LC(V)    &kp Z            
+                &cd C dmac   &kp BSPC    &kp LC(V)    &kp Z            
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
                 };
