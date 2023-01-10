@@ -18,12 +18,12 @@
         cd: global-quick-tap {
             compatible = "zmk,behavior-hold-tap";
             label = "GLOBAL_QUICK_TAP";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
             quick-tap-ms = <1000>;
             global-quick-tap;
-            bindings = <&kp>, <&kp>;
+            bindings = &cmac, <&kp>;
         };
     };
 
@@ -39,12 +39,12 @@
                 ;
         };
 
-        dmac: dmac {
-            label = "d macro";
+        cmac: cmac {
+            label = "c macro";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp D>
+                = <&macro_tap &kp C>
                 ;
         };
 
@@ -74,7 +74,7 @@ label= "TVP1"                          ;
 
     &ab         &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp Y
-                &cd C dmac   &kp BSPC    &kp LC(V)    &kp Z            
+                &cd D       &kp BSPC    &kp LC(V)    &kp Z            
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
                 };
