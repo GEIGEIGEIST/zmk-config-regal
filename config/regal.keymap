@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/mouse.h>
 
 #define TVP1  0
 #define TVP2  1
@@ -61,7 +62,7 @@
 label= "TVP1"                          ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │           │  MARK IN  │    ROT    │  MARK OUT ││   PLAY    ││  PLY/PSE  │
+// │           │  MARK IN  │    ROT    │  MARK OUT ││ UNDO/SAVE ││   PLAY    │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │   TVP2    │   LEFT    │    PAN    │   RIGHT   ││   ERASER  │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
@@ -70,11 +71,11 @@ label= "TVP1"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &ab         &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp C_PP
-    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp Y
+    &ab         &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp SPACE
+    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &mkp RCLK
                 &cd 0 D     &kp BSPC    &kp LC(V)    &kp Z            
                         >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp U LS(U)>;
                 };
 
 // ───────────────────────────────────────────────────────────────────────────
