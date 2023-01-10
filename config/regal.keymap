@@ -72,7 +72,7 @@ label= "TVP1"                          ;
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &ab         &kp O       &kp LC(LALT) &kp I       &kp SPACE    &kp SPACE
-    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp LA(P)
+    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &kp P
                 &cd 0 D     &kp BSPC    &kp LC(V)    &kp Z            
                         >;
             sensor-bindings = <&inc_dec_kp U LS(U)>;
