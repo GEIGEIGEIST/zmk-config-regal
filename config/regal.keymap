@@ -27,6 +27,18 @@
         };
     };
 
+    macros {
+        ab: ab {
+            label = "ab";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp A>
+                , <&macro_pause_for_release>
+                , <&macro_tap &kp B>
+                ;
+        };
+
         cmac: cmac {
             label = "c macro";
             compatible = "zmk,behavior-macro";
@@ -35,8 +47,6 @@
                 = <&macro_tap &kp C>
                 ;
         };
-
-
 
  
     };
