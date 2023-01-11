@@ -192,7 +192,7 @@ label= "TVP1"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp O       &cl_im 0 Y  &kp I        &t_erase     &kp SPACE
+    &kp LSHFT   &kp O       &t_clim 0 Y  &kp I       &t_erase     &kp SPACE
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &t_unsav 0 U
                 &kp C       &kp BSPC    &kp V        &t_lay 0 A            
                         >;
@@ -215,7 +215,7 @@ label= "TVP2"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp F       &kp LS(O)   &cl_im 0 B  &kp LS(I)    &t_sel 0 S  &kp HOME
+    &kp F       &kp LS(O)   &t_clbm 0 B  &kp LS(I)   &t_sel 0 S  &kp HOME
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
                 &kp LS(C)   &kp LS(BSPC) &kp LS(V)   &t_trans 0 T          
                         >;
