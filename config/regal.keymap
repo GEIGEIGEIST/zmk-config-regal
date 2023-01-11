@@ -60,6 +60,39 @@
             bindings = <&t_clbm>, <&kp>;
         };
 
+        t_sel: t_sel {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TVP_SelectDeselect";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&t_dsl>, <&kp>;
+        };
+
+        t_move: t_move {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TVP_Move";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&t_clmove>, <&kp>;
+        };
+
+        t_trans: t_trans {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TVP_Transform";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&t_cltrans>, <&kp>;
+        };
+
     };
 
     macros {
@@ -111,6 +144,35 @@
                 ;
         };
 
+        t_dsl: t_dsl {
+            label = "TVP_Deselect";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp D>
+                ;
+        };
+
+        t_clmove: t_clmove {
+            label = "TVP_ClearMove";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp D>
+                ;
+        };
+
+        t_cltrans: t_cltrans {
+            label = "TVP_ClearTrans";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp RETURN>
+                , <&macro_tap &kp D>
+                , <&macro_tap &kp P>
+                ;
+        };
+
     };
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -132,7 +194,7 @@ label= "TVP1"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp O       &t_imark 0 Y &kp I        &t_erase     &kp SPACE
+    &kp LSHFT   &kp O       &t_imark 0 Y &kp I       &t_erase     &kp SPACE
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &t_unsav 0 U
                 &kp C       &kp BSPC    &kp V        &t_lay 0 A             
                         >;
@@ -155,9 +217,9 @@ label= "TVP2"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp F       &kp LS(O)   &t_bmark 0 B &kp LS(I)    &kp S       &kp HOME
-    &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &kp M
-                &kp LS(C)   &kp LS(BSPC) &kp LS(V)   &kp T          
+    &kp F       &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
+    &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
+                &kp LS(C)   &kp LS(BSPC) &kp LS(V)   &t_trans 0 T         
                         >;
             sensor-bindings = <&inc_dec_kp LS(R) R>;
                 };
