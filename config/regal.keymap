@@ -26,6 +26,18 @@
             global-quick-tap;
             bindings = <&t_save>, <&kp>;
         };
+
+        t_lay: t_lay {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TVP_NewDelLay";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&t_del_l>, <&kp>;
+        };
+
     };
 
     macros {
@@ -46,6 +58,16 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LS(S)>
+                ;
+        };
+
+
+        t_del_l: t_del_l {
+            label = "TVP_DeleteLayer";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LS(A)>
                 ;
         };
 
@@ -72,7 +94,7 @@ label= "TVP1"                          ;
 
     &kp LSHFT   &kp O       &kp Y       &kp I        &t_erase     &kp SPACE
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &t_unsav 0 U
-                &kp C       &kp BSPC    &kp V        &kp A            
+                &kp C       &kp BSPC    &kp V        &t_lay 0 A             
                         >;
             sensor-bindings = <&inc_dec_kp LS(Z) Z>;
                 };
