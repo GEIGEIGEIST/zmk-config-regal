@@ -196,7 +196,7 @@ label= "TVP1"                          ;
 
     &kp LSHFT   &kp O       &t_imark 0 Y &kp I       &t_erase     &kp SPACE
     &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &t_unsav 0 U
-                &kp C       &kp DEL    &kp V        &t_lay 0 A             
+                &kp V       &kp DEL     &kp C        &t_lay 0 A             
                         >;
             sensor-bindings = <&inc_dec_kp LS(Z) Z>;
                 };
@@ -219,7 +219,7 @@ label= "TVP2"                          ;
 
     &kp F       &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
-                &kp LS(C)   &kp LS(DEL) &kp LS(V)   &t_trans 0 T         
+                &kp LS(V)   &kp LS(DEL) &kp LS(C)    &t_trans 0 T         
                         >;
             sensor-bindings = <&inc_dec_kp LS(R) R>;
                 };
