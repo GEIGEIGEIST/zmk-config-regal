@@ -217,7 +217,7 @@ label= "TVP2"                          ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp F       &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
+    &kp J       &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
                 &kp LS(V)   &kp LS(DEL) &kp LS(C)    &t_trans 0 T         
                         >;
