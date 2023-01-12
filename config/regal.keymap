@@ -26,15 +26,15 @@
         };
 
 
-        t_unsav: t_unsav {
+        k_unsav: t_unsav {
             compatible = "zmk,behavior-hold-tap";
-            label = "TVP_UndoSave";
+            label = "KRITA_UndoSave";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
             quick-tap-ms = <1000>;
             global-quick-tap;
-            bindings = <&t_save>, <&kp>;
+            bindings = <&k_save>, <&kp>;
         };
 
         t_lay: t_lay {
@@ -117,12 +117,12 @@
                 ;
         };
 
-        t_save: t_save {
-            label = "TVP_Save";
+        k_save: k_save {
+            label = "KRITA_Save";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LS(S)>
+                = <&macro_tap &kp LC(S)>
                 ;
         };
 
@@ -195,21 +195,21 @@
 label= "KRITA1"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │   SHIFT   │  MARK OUT │ ROT/RESET │  MARK IN  ││           ││           │
+// │ SHIFT     │ MARK OUT  │ ROT/RESET │ MARK IN   ││ UNDO/SAVE ││ PLAY      │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │   KRITA2  │  NFRAME   │    PAN    │  PFRAME   ││           │
+// │ KRITA2    │ NX FRAME  │ PAN       │ PR FRAME  ││           │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │   PASTE   │    DEL    │   COPY    ││           │
+//             │ PASTE KF  │ DEL       │ COPY KF   ││           │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp O       &k_rot      &kp I        &t_erase     &kp SPACE
-    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &t_unsav 0 U
-                &kp LC(V)   &kp DEL     &kp LC(C)    &t_lay 0 A             
+    &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp SPACE
+    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &t_erase
+              &kp LA(LC(V)) &kp DEL   &kp LA(LC(C))  &t_lay 0 A             
                         >;
-            sensor-bindings = <&inc_dec_kp LS(Z) Z>;
-                };
+            sensor-bindings = <&inc_dec_kp LS(H) LA(H) >; // NEW HOLD / DEL HOLD
+                };   
 
 // ───────────────────────────────────────────────────────────────────────────
 
@@ -218,20 +218,20 @@ label= "KRITA1"                        ;
 label= "KRITA2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │  FULLSCR  │  TG M OUT │  BK MARK  │  TG M IN  ││           ││           │
+// │ FULLSCR   │           │           │           ││           ││ PLY/PSE   │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │    ---    │   NKEY    │  NEW KEY  │   PKEY    ││           │
+// │    ---    │ NX KEY    │ NEW KEY   │ PR KEY    ││           │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │  CPY2BR   │  DELHEAD  │  PSTIPLC  ││           │
+//             │ PASTE     │ DELHEAD   │ COPY      ││           │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
+    &kp TAB     &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp C_PP
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
-                &kp LS(V)   &kp LS(DEL) &kp LS(C)    &t_trans 0 T         
+                &kp LC(V)   &kp LS(DEL) &kp LC(C)    &t_trans 0 T         
                         >;
-            sensor-bindings = <&inc_dec_kp LS(R) R>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; // VOL UP / VOL DOWN
                 };
         };
 };
