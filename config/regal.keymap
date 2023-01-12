@@ -199,14 +199,14 @@ label= "KRITA1"                        ;
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │   KRITA2  │  NFRAME   │    PAN    │  PFRAME   ││           │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │   COPY    │    DEL    │   PASTE   ││           │
+//             │   PASTE   │    DEL    │   COPY    ││           │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &t_erase     &kp SPACE
     &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &t_unsav 0 U
-                &kp V       &kp DEL     &kp C        &t_lay 0 A             
+                &kp LC(V)   &kp DEL     &kp LC(C)    &t_lay 0 A             
                         >;
             sensor-bindings = <&inc_dec_kp LS(Z) Z>;
                 };
