@@ -11,11 +11,21 @@
 #include <dt-bindings/zmk/outputs.h>
 //#include <dt-bindings/zmk/mouse.h>
 
-#define TVP1  0
-#define TVP2  1
+#define KRITA1  0
+#define KRITA2  1
 
 / {
     behaviors {
+
+        k_rot: rot_reset {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Rotation_Reset";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N1>, <&kp N2>;
+        };
+
+
         t_unsav: t_unsav {
             compatible = "zmk,behavior-hold-tap";
             label = "TVP_UndoSave";
@@ -180,22 +190,22 @@
         keymap {
                 compatible = "zmk,keymap";
 
-                tvp1_layer {
+                krita1_layer {
 // ┌───────────────────────────────────┐
-label= "TVP1"                          ;
+label= "KRITA1"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │   SHIFT   │  MARK IN  │ IMG MARK  │  MARK OUT ││   ERASE   ││   PLAY    │
+// │   SHIFT   │  MARK OUT │ ROT/RESET │  MARK IN  ││           ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │   TVP2    │  PFRAME   │    PAN    │  NFRAME   ││ UNDO/SAVE │
+// │   KRITA2  │  NFRAME   │    PAN    │  PFRAME   ││           │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │   COPY    │    DEL    │   PASTE   ││ NLAY/DLAY │
+//             │   COPY    │    DEL    │   PASTE   ││           │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp O       &t_imark 0 Y &kp I       &t_erase     &kp SPACE
-    &lt TVP2 L  &kp RIGHT   &kp LALT    &kp LEFT     &t_unsav 0 U
+    &kp LSHFT   &kp O       &k_rot      &kp I        &t_erase     &kp SPACE
+    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &t_unsav 0 U
                 &kp V       &kp DEL     &kp C        &t_lay 0 A             
                         >;
             sensor-bindings = <&inc_dec_kp LS(Z) Z>;
@@ -203,21 +213,21 @@ label= "TVP1"                          ;
 
 // ───────────────────────────────────────────────────────────────────────────
 
-                tvp_layer2 {
+                krita_layer2 {
 // ┌───────────────────────────────────┐
-label= "TVP2"                          ;
+label= "KRITA2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │  FULLSCR  │  TG M IN  │  BK MARK  │  TG M OUT ││ SEL/DSEL  ││  RST ROT  │
+// │  FULLSCR  │  TG M OUT │  BK MARK  │  TG M IN  ││           ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │    ---    │   PKEY    │  NEW KEY  │   NKEY    ││   MOVE    │
+// │    ---    │   NKEY    │  NEW KEY  │   PKEY    ││           │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │  CPY2BR   │  DELHEAD  │  PSTIPLC  ││   TRANS   │
+//             │  CPY2BR   │  DELHEAD  │  PSTIPLC  ││           │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp J       &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
+    &kp TAB     &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp HOME
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
                 &kp LS(V)   &kp LS(DEL) &kp LS(C)    &t_trans 0 T         
                         >;
