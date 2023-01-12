@@ -206,9 +206,9 @@ label= "KRITA1"                        ;
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp SPACE
     &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &t_erase
-              &kp LA(LC(V)) &kp DEL   &kp LA(LC(C))  &t_lay 0 A             
+              &kp LA(LS(V)) &kp DEL   &kp LA(LS(C))  &t_lay 0 A             
                         >;
-            sensor-bindings = <&inc_dec_kp LS(H) LA(H) >; // NEW HOLD / DEL HOLD
+            sensor-bindings = <&inc_dec_kp LC(Y) LC(LS(Y)) >; // NEW HOLD / DEL HOLD
                 };   
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -227,9 +227,9 @@ label= "KRITA2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp C_PP
-    &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &t_move 0 M
-                &kp LC(V)   &kp LS(DEL) &kp LC(C)    &t_trans 0 T         
+    &kp TAB     &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp K_PP
+    &trans      &kp LS(RIGHT) &kp LA(K)  &kp LS(LEFT) &t_move 0 M
+                &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &t_trans 0 T         
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; // VOL UP / VOL DOWN
                 };
