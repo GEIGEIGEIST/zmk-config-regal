@@ -22,7 +22,7 @@
             label = "Rotation_Reset";
             #binding-cells = <0>;
             tapping-term-ms = <300>;
-            bindings = <&kp R>, <&kp LS(R)>;
+            bindings = <&kp LS(SPACE)>, <&kp LS(R)>;
         };
 
 
