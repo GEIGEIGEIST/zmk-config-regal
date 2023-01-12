@@ -21,8 +21,8 @@
             compatible = "zmk,behavior-tap-dance";
             label = "Rotation_Reset";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp N1>, <&kp N2>;
+            tapping-term-ms = <300>;
+            bindings = <&kp R>, <&kp LS(R)>;
         };
 
 
