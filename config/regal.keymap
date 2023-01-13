@@ -49,61 +49,37 @@
             bindings = <&k_dsel>, <&kp>;
         };
 
-        t_lay: t_lay {
+        k_lay: k_lay {
             compatible = "zmk,behavior-hold-tap";
-            label = "TVP_NewDelLay";
+            label = "KRITA_NewDelLay";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
             quick-tap-ms = <1000>;
             global-quick-tap;
-            bindings = <&t_del_l>, <&kp>;
+            bindings = <&k_del_l>, <&kp>;
         };
 
-        t_imark: t_imark {
+        k_move: k_move {
             compatible = "zmk,behavior-hold-tap";
-            label = "TVP_ImageMark";
+            label = "KRITA_Move";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
             quick-tap-ms = <1000>;
             global-quick-tap;
-            bindings = <&t_clim>, <&kp>;
+            bindings = <&k_clmove>, <&kp>;
         };
 
-        t_bmark: t_bmark {
+        k_trans: k_trans {
             compatible = "zmk,behavior-hold-tap";
-            label = "TVP_BookMark";
+            label = "KRITA_Transform";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
             quick-tap-ms = <1000>;
             global-quick-tap;
-            bindings = <&t_clbm>, <&kp>;
-        };
-
-
-
-        t_move: t_move {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TVP_Move";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <400>;
-            quick-tap-ms = <1000>;
-            global-quick-tap;
-            bindings = <&t_clmove>, <&kp>;
-        };
-
-        t_trans: t_trans {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TVP_Transform";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <400>;
-            quick-tap-ms = <1000>;
-            global-quick-tap;
-            bindings = <&t_cltrans>, <&kp>;
+            bindings = <&k_cltrans>, <&kp>;
         };
 
     };
@@ -128,63 +104,32 @@
                 ;
         };
 
-        t_erase: t_erase {
-            label = "TVP_Erase";
+        k_del_l: k_del_l {
+            label = "KRITA_DeleteLayer";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp E>
-                , <&macro_pause_for_release>
-                , <&macro_tap &kp LS(E)>
+                = <&macro_tap &kp LS(BSPC)>
                 ;
         };
 
-
-
-        t_del_l: t_del_l {
-            label = "TVP_DeleteLayer";
+        k_clmove: k_clmove {
+            label = "KRITA_ClearMove";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LS(A)>
+                = <&macro_tap &kp LC(D)>
                 ;
         };
 
-        t_clim: t_clim {
-            label = "TVP_ClearImageMark";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LS(Y)>
-                ;
-        };
-
-        t_clbm: t_clbm {
-            label = "TVP_ClearBookMark";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LS(B)>
-                ;
-        };
-
-        t_clmove: t_clmove {
-            label = "TVP_ClearMove";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp D>
-                ;
-        };
-
-        t_cltrans: t_cltrans {
-            label = "TVP_ClearTrans";
+        k_cltrans: k_cltrans {
+            label = "KRITA_ClearTrans";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp RETURN>
-                , <&macro_tap &kp D>
-                , <&macro_tap &kp P>
+                , <&macro_tap &kp LC(D)>
+                , <&macro_tap &kp B>
                 ;
         };
 
@@ -223,7 +168,7 @@ label= "KRITA1"                        ;
 label= "KRITA2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │ FSCREEN   │           │ DEL LAYER │           ││ FSCREEN   ││           │
+// │ FSCREEN   │ NEW HOLD  │ NLAY/DLAY │ DEL HOLD  ││ FSCREEN   ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │    ---    │ NXT KEY   │ NEW KEY   │ PRV KEY   ││ MOVE      │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
@@ -232,7 +177,7 @@ label= "KRITA2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &trans      &kp LS(BSPC) &trans       &kp TAB      &trans
+    &kp TAB     &kp LC(W)   &k_lay      &kp LC(LS(W)) &kp TAB      &trans
     &trans      &kp LS(RIGHT) &kp LA(K)  &kp LS(LEFT) &k_move 0 M
                 &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 T         
                         >;
