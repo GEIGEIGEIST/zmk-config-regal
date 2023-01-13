@@ -197,18 +197,18 @@ label= "KRITA1"                        ;
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
 // │ SHIFT     │ MARK OUT  │ ROT/RESET │ MARK IN   ││ UNDO/SAVE ││ PLAY      │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │ KRITA2    │ NX FRAME  │ PAN       │ PR FRAME  ││           │
+// │ KRITA2    │ NX FRAME  │ PAN       │ PR FRAME  ││ PLAY      │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │ PASTE KF  │ DEL       │ COPY KF   ││           │
+//             │ PASTE KF  │ DEL       │ COPY KF   ││ SELECT    │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp SPACE
-    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &t_erase
-              &kp LA(LS(V)) &kp DEL   &kp LA(LS(C))  &t_lay 0 A             
+    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &kp SPACE
+              &kp LA(LS(V)) &kp DEL   &kp LA(LS(C))  &kp S             
                         >;
-            sensor-bindings = <&inc_dec_kp LC(Y) LC(LS(Y)) >; // NEW HOLD / DEL HOLD
+            sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
                 };   
 
 // ───────────────────────────────────────────────────────────────────────────
