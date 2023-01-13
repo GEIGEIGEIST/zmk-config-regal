@@ -179,7 +179,7 @@ label= "KRITA2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LC(LS(W)  &k_lay 0 INS &kp LC(W) &kp TAB      &trans
+    &kp TAB     &kp LC(LS(W)) &k_lay 0 INS &kp LC(W) &kp TAB      &trans
     &trans      &kp LS(RIGHT) &kp LA(K)  &kp LS(LEFT) &k_move 0 M
                 &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 T         
                         >;
