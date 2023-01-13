@@ -156,7 +156,7 @@ label= "KRITA1"                        ;
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &trans
     &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &kp SPACE
-              &kp LA(LS(V)) &kp DEL   &kp LA(LS(C))  &k_sel             
+              &kp LA(LS(V)) &kp DEL     &kp LA(LS(C)) &k_sel 0 S             
                         >;
             sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
                 };   
@@ -170,18 +170,18 @@ label= "KRITA2"                        ;
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
 // │ FSCREEN   │ NEW HOLD  │ NLAY/DLAY │ DEL HOLD  ││ FSCREEN   ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │    ---    │ NXT KEY   │ NEW KEY   │ PRV KEY   ││ MOVE      │
+// │    ---    │ NEXT KEY  │ NEW KEY   │ PREV KEY  ││ MOVE      │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
 //             │ PASTE     │ DEL HEAD  │ COPY      ││ TRANSFORM │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LC(W)   &k_lay      &kp LC(LS(W)) &kp TAB      &trans
+    &kp TAB     &kp LC(W)   &k_lay 0 INS &kp LC(LS(W)) &kp TAB      &trans
     &trans      &kp LS(RIGHT) &kp LA(K)  &kp LS(LEFT) &k_move 0 M
                 &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 T         
                         >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; // VOL UP / VOL DOWN
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>; // NEXT LAYER / PREV LAYER
                 };
         };
 };
