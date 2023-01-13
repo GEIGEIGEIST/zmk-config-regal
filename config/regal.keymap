@@ -37,6 +37,18 @@
             bindings = <&k_save>, <&kp>;
         };
 
+
+        k_sel: k_sel {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KRITA_SelectDeselect";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&k_dsel>, <&kp>;
+        };
+
         t_lay: t_lay {
             compatible = "zmk,behavior-hold-tap";
             label = "TVP_NewDelLay";
@@ -70,16 +82,7 @@
             bindings = <&t_clbm>, <&kp>;
         };
 
-        t_sel: t_sel {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TVP_SelectDeselect";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <400>;
-            quick-tap-ms = <1000>;
-            global-quick-tap;
-            bindings = <&t_dsl>, <&kp>;
-        };
+
 
         t_move: t_move {
             compatible = "zmk,behavior-hold-tap";
@@ -106,6 +109,25 @@
     };
 
     macros {
+
+        k_save: k_save {
+            label = "KRITA_Save";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(S)>
+                ;
+        };
+
+        k_dsel: k_dsel {
+            label = "KRITA_Deselect";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(D)>
+                ;
+        };
+
         t_erase: t_erase {
             label = "TVP_Erase";
             compatible = "zmk,behavior-macro";
@@ -117,14 +139,6 @@
                 ;
         };
 
-        k_save: k_save {
-            label = "KRITA_Save";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LC(S)>
-                ;
-        };
 
 
         t_del_l: t_del_l {
@@ -151,15 +165,6 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LS(B)>
-                ;
-        };
-
-        t_dsl: t_dsl {
-            label = "TVP_Deselect";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp D>
                 ;
         };
 
@@ -195,18 +200,18 @@
 label= "KRITA1"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │ SHIFT     │ MARK OUT  │ ROT/RESET │ MARK IN   ││ UNDO/SAVE ││ PLAY      │
+// │ SHIFT     │ MARK OUT  │ ROT/RESET │ MARK IN   ││ UNDO/SAVE ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │ KRITA2    │ NX FRAME  │ PAN       │ PR FRAME  ││ PLAY      │
+// │ KRITA2    │ NXT FRAME │ PAN       │ PRV FRAME ││ PLAY      │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │ PASTE KF  │ DEL       │ COPY KF   ││ SELECT    │
+//             │ PASTE KF  │ DEL       │ COPY KF   ││ SEL/DSEL  │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp SPACE
+    &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &trans
     &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &kp SPACE
-              &kp LA(LS(V)) &kp DEL   &kp LA(LS(C))  &kp S             
+              &kp LA(LS(V)) &kp DEL   &kp LA(LS(C))  &k_sel             
                         >;
             sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
                 };   
@@ -218,18 +223,18 @@ label= "KRITA1"                        ;
 label= "KRITA2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │ FULLSCR   │           │           │           ││           ││ PLY/PSE   │
+// │ FSCREEN   │           │ DEL LAYER │           ││ FSCREEN   ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │    ---    │ NX KEY    │ NEW KEY   │ PR KEY    ││           │
+// │    ---    │ NXT KEY   │ NEW KEY   │ PRV KEY   ││ MOVE      │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │ PASTE     │ DELHEAD   │ COPY      ││           │
+//             │ PASTE     │ DEL HEAD  │ COPY      ││ TRANSFORM │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LS(O)   &t_bmark 0 B &kp LS(I)   &t_sel 0 S   &kp K_PP
-    &trans      &kp LS(RIGHT) &kp LA(K)  &kp LS(LEFT) &t_move 0 M
-                &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &t_trans 0 T         
+    &kp TAB     &trans      &kp LS(BSPC) &trans       &kp TAB      &trans
+    &trans      &kp LS(RIGHT) &kp LA(K)  &kp LS(LEFT) &k_move 0 M
+                &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 T         
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>; // VOL UP / VOL DOWN
                 };
