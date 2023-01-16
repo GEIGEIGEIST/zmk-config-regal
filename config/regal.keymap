@@ -24,9 +24,8 @@
             label = "Rotation_Reset";
             #binding-cells = <0>;
             tapping-term-ms = <300>;
-            bindings = <&kp LC(SPACE)>, <&kp LS(R)>;
+            bindings = <&kp R>, <&kp LS(R)>;
         };
-
 
         k_unsav: t_unsav {
             compatible = "zmk,behavior-hold-tap";
@@ -38,7 +37,6 @@
             global-quick-tap;
             bindings = <&k_save>, <&kp>;
         };
-
 
         k_resav: t_resav {
             compatible = "zmk,behavior-hold-tap";
@@ -52,6 +50,17 @@
         };
 
 
+        k_plbs: t_plbs {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KRITA_PlayBrushsize";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
+
         k_sel: k_sel {
             compatible = "zmk,behavior-hold-tap";
             label = "KRITA_SelectDeselect";
@@ -63,15 +72,14 @@
             bindings = <&k_dsel>, <&kp>;
         };
 
-        k_lay: k_lay {
-            compatible = "zmk,behavior-hold-tap";
-            label = "KRITA_NewDelLay";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <400>;
-            quick-tap-ms = <1000>;
-            global-quick-tap;
-            bindings = <&k_del_l>, <&kp>;
+        k_alay: k_alay {
+            label = "KRITA_NewAnimLayer";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LC(L)>
+                , <&macro_tap &kp LC(LA(A))>
+                ;
         };
 
         k_move: k_move {
@@ -123,17 +131,8 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LC(D)>
+                = <&macro_tap &kp D>
                 , <&macro_tap &kp B>
-                ;
-        };
-
-        k_del_l: k_del_l {
-            label = "KRITA_DeleteLayer";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LS(BSPC)>
                 ;
         };
 
@@ -142,7 +141,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LC(D)>
+                = <&macro_tap &kp D>
                 , <&macro_tap &kp B>
                 ;
         };
@@ -153,7 +152,7 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp RETURN>
-                , <&macro_tap &kp LC(D)>
+                , <&macro_tap &kp D>
                 , <&macro_tap &kp B>
                 ;
         };
@@ -174,14 +173,14 @@ label= "KRITA1"                        ;
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │ KRITA2    │ NXT FRAME │ PAN       │ PRV FRAME ││ SEL/DSEL  │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │ PASTE KF  │ DEL       │ COPY KF   ││ PLAY      │
+//             │ PASTE KF  │ CLEAR     │ COPY KF   ││ PLAY      │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp TAB
-    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &k_sel 0 LA(S)
-              &kp LA(LS(V)) &kp LA(DEL)     &kp LA(LS(C)) &kp SPACE          
+    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &k_sel 0 D
+              &kp LC(LA(V)) &kp DEL     &kp LC(LA(C)) &k_plbs Z SPACE       
                         >;
             sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
                 };   
@@ -193,18 +192,18 @@ label= "KRITA1"                        ;
 label= "KRITA2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │ FSCREEN   │ NEW HOLD  │ NLAY/DLAY │ DEL HOLD  ││ REDO/SAVE ││           │
+// │ FSCREEN   │ NEW LAYER │ DEL LAYER │ NEW ALAY  ││ REDO/SAVE ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │    ---    │ NEXT KEY  │ NEW KEY   │ PREV KEY  ││ MOVE      │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │ PASTE     │ DEL HEAD  │ COPY      ││ TRANSFORM │
+//             │ PASTE     │ DEL KEY   │ COPY      ││ TRANSFORM │
 //             └───────────┴───────────┴───────────┘╰───────────╯
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LC(LS(W)) &k_lay 0 INS &kp LC(W)  &k_resav 0 LC(LS(Z))  &trans
-    &trans      &kp LS(RIGHT) &kp LC(K)  &kp LS(LEFT) &k_move 0 LC(M)
-                &kp LA(LC(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 LC(T)         
+    &kp TAB     &kp LC(L)   &kp LC(W)  &k_alay       LC(LS(Z))  &trans
+    &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &k_move 0 M
+                &kp LC(LS(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 T        
                         >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
                 };
