@@ -120,8 +120,8 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LC(L)>
-                , <&macro_tap &kp LC(LA(A))>
+                = <&macro_tap &kp LC(L)>
+                , <&macro_tap &kp K>
                 ;
         };
 
@@ -189,7 +189,7 @@ label= "KRITA2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LC(L)     &kp LC(LA(DEL)) &k_alay &kp LC(LS(Z)) &trans
+    &kp TAB     &kp LC(L)     &kp LC(BSPC) &k_alay &kp LC(LS(Z)) &trans
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &k_move 0 M
                 &kp LC(LS(V)) &kp LS(DEL) &kp LC(C)  &k_trans 0 T        
                         >;
