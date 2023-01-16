@@ -50,17 +50,6 @@
         };
 
 
-        k_plbs: k_plbs {
-            compatible = "zmk,behavior-hold-tap";
-            label = "KRITA_PlayBrushsize";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <400>;
-            quick-tap-ms = <1000>;
-            global-quick-tap;
-            bindings = <&kp>, <&kp>;
-        };
-
         k_sel: k_sel {
             compatible = "zmk,behavior-hold-tap";
             label = "KRITA_SelectDeselect";
@@ -70,16 +59,6 @@
             quick-tap-ms = <1000>;
             global-quick-tap;
             bindings = <&k_dsel>, <&kp>;
-        };
-
-        k_alay: k_alay {
-            label = "KRITA_NewAnimLayer";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LC(L)>
-                , <&macro_tap &kp LC(LA(A))>
-                ;
         };
 
         k_move: k_move {
@@ -180,9 +159,9 @@ label= "KRITA1"                        ;
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp TAB
     &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &k_sel 0 D
-              &kp LC(LA(V)) &kp DEL     &kp LC(LA(C)) &k_plbs Z SPACE       
+              &kp LC(LA(V)) &kp DEL     &kp LC(LA(C)) &kp SPACE      
                         >;
-            sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
+            sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W))>; // NEW HOLD / DEL HOLD
                 };   
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -201,9 +180,9 @@ label= "KRITA2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LC(L)   &kp LC(W)  &k_alay       LC(LS(Z))  &trans
+    &kp TAB     &kp LC(L)     &kp LC(W) &kp LC(L)      LC(LS(Z))    &trans
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &k_move 0 M
-                &kp LC(LS(V)) &kp LS(DEL) &kp LC(C)   &k_trans 0 T        
+                &kp LC(LS(V)) &kp LS(DEL) &kp LC(C)  &k_trans 0 T        
                         >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
                 };
