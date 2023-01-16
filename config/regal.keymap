@@ -49,6 +49,16 @@
             bindings = <&k_saveinc>, <&kp>;
         };
 
+        k_plbs: k_plbs {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KRITA_PlayBrushsize";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
 
         k_sel: k_sel {
             compatible = "zmk,behavior-hold-tap";
@@ -69,7 +79,7 @@
             tapping-term-ms = <400>;
             quick-tap-ms = <1000>;
             global-quick-tap;
-            bindings = <&k_clmove>, <&kp>;
+            bindings = <&k_dsel>, <&kp>;
         };
 
         k_trans: k_trans {
@@ -105,18 +115,18 @@
                 ;
         };
 
-        k_dsel: k_dsel {
-            label = "KRITA_Deselect";
+        k_alay: k_alay {
+            label = "KRITA_NewAnimLayer";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp D>
-                , <&macro_tap &kp B>
+                = <&macro_press &kp LC(L)>
+                , <&macro_tap &kp LC(LA(A))>
                 ;
         };
 
-        k_clmove: k_clmove {
-            label = "KRITA_ClearMove";
+        k_dsel: k_dsel {
+            label = "KRITA_Deselect";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -131,8 +141,7 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp RETURN>
-                , <&macro_tap &kp D>
-                , <&macro_tap &kp B>
+                , <&macro_tap &dsel>
                 ;
         };
 
@@ -159,7 +168,7 @@ label= "KRITA1"                        ;
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp TAB
     &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &k_sel 0 D
-              &kp LC(LA(V)) &kp DEL     &kp LC(LA(C)) &kp SPACE      
+              &kp LC(LA(V)) &kp DEL     &kp LC(LA(C)) &k_plbs Z SPACE   
                         >;
             sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W))>; // NEW HOLD / DEL HOLD
                 };   
@@ -180,7 +189,7 @@ label= "KRITA2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp TAB     &kp LC(L)     &kp LC(W) &kp LC(L)    &kp LC(LS(Z)) &trans
+    &kp TAB     &kp LC(L)     &kp LC(W) &k_alay      &kp LC(LS(Z)) &trans
     &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &k_move 0 M
                 &kp LC(LS(V)) &kp LS(DEL) &kp LC(C)  &k_trans 0 T        
                         >;
