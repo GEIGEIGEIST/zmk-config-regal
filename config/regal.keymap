@@ -24,7 +24,7 @@
             label = "Rotation_Reset";
             #binding-cells = <0>;
             tapping-term-ms = <300>;
-            bindings = <&kp R>, <&kp LS(R)>;
+            bindings = <&kp LC(SPACE)>, <&kp LS(R)>;
         };
 
         k_unsav: t_unsav {
