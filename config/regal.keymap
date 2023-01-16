@@ -141,7 +141,7 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp RETURN>
-                , <&macro_tap &dsel>
+                , <&macro_tap &k_dsel>
                 ;
         };
 
