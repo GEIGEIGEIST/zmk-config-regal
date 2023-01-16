@@ -50,7 +50,7 @@
         };
 
 
-        k_plbs: t_plbs {
+        k_plbs: k_plbs {
             compatible = "zmk,behavior-hold-tap";
             label = "KRITA_PlayBrushsize";
             #binding-cells = <2>;
