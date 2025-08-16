@@ -136,7 +136,8 @@
             #binding-cells = <1>;
             bindings
                 = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp MACRO_PLACEHOLDER>
+                , <&macro_param_1to1>
+                , <&kp MACRO_PLACEHOLDER>
                 , <&macro_release &kp LCTRL>
                 ;
         };
@@ -253,7 +254,7 @@ label= "CALLI2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &bt BT_CLR  &trans      &kp LCTRL   &c_mac T    &kp LC(LS(Y)) &kp C_PP
+    &bt BT_CLR  &kp LC(T)   &kp LCTRL   &c_mac T    &kp LC(LS(Y)) &kp C_PP
     &trans      &kp LC(RIGHT) &kp T    &kp LC(LEFT) &c_trans 0 LC(T)
                 &kp LSHIFT   &kp LALT   &kp LGUI    &trans      
                         >;
