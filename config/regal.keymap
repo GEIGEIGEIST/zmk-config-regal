@@ -231,9 +231,9 @@ label= "CALLI2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &bt BT_CLR  &trans      &kp LC(T)   &trans       &kp LC(LS(Y)) &trans
-    &trans      &kp LC(RIGHT) &trans    &kp LC(LEFT) &c_trans 0 LC(T)
-                &kp LS(T)   &kp LA(T)   &kp LG(T)    &trans      
+    &bt BT_CLR  &trans      &kp LCTRL   &trans       &kp LC(LS(Y)) &trans
+    &trans      &kp LC(RIGHT) &kp T    &kp LC(LEFT) &c_trans 0 LC(T)
+                &kp LSHIFT   &kp LALT   &kp LGUI    &trans      
                         >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
                 };
