@@ -11,10 +11,10 @@
 #include <dt-bindings/zmk/outputs.h>
 //#include <dt-bindings/zmk/mouse.h>
 
-#define KRITA1  0
-#define KRITA2  1
-#define HEAVY1  2
-#define HEAVY2  3
+#define CALLI1  0
+#define CALLI2  1
+#define KRITA1  2
+#define KRITA2  3
 
 / {
     behaviors {
@@ -71,6 +71,17 @@
             bindings = <&k_dsel>, <&kp>;
         };
 
+        c_sel: c_sel {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KRITA_SelectDeselect";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&c_dsel>, <&kp>;
+        };
+
         k_move: k_move {
             compatible = "zmk,behavior-hold-tap";
             label = "KRITA_Move";
@@ -91,6 +102,17 @@
             quick-tap-ms = <1000>;
             global-quick-tap;
             bindings = <&k_cltrans>, <&kp>;
+        };
+
+        c_trans: c_trans {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CALLI_Transform";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <1000>;
+            global-quick-tap;
+            bindings = <&c_cltrans>, <&kp>;
         };
 
     };
@@ -135,6 +157,17 @@
                 ;
         };
 
+        c_dsel: c_dsel {
+            label = "CALLI_Deselect";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(T)>
+                , <&macro_tap &kp RETURN>
+                , <&macro_tap &kp B>
+                ;
+        };
+
         k_cltrans: k_cltrans {
             label = "KRITA_ClearTrans";
             compatible = "zmk,behavior-macro";
@@ -145,12 +178,68 @@
                 ;
         };
 
+        c_cltrans: c_cltrans {
+            label = "CALLI_ClearTrans";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp RETURN>
+                ;
+        };
+
     };
 
 // ───────────────────────────────────────────────────────────────────────────
 
         keymap {
                 compatible = "zmk,keymap";
+
+                calli1_layer {
+// ┌───────────────────────────────────┐
+label= "CALLI1"                        ;
+// └───────────────────────────────────┘
+// ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
+// │ SHIFT     │ NEXT KEY  │ TRANSFORM │ PREV KEY  ││ UNDO      ││           │
+// ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
+// │ CALLI2    │ NXT FRAME │ RETURN    │ PRV FRAME ││ SEL/DSEL  │
+// └───────────┼───────────┼───────────┼───────────┤├───────────┤
+//             │ PASTE     │ CLEAR     │ COPY      ││ PLAY      │
+//             └───────────┴───────────┴───────────┘╰───────────╯
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
+
+    &kp LSHFT   &kp LC(RIGHT) &kp LC(T) &kp LC(LEFT) &kp LC(Y)    &none
+    &lt CALLI2 L &kp RIGHT  &kp RET     &kp LEFT     &c_sel 0 S
+                &kp LC(C)   &kp BSPC    &kp LC(V)    &kp SPACE   
+                        >;
+            sensor-bindings = <&inc_dec_kp UP DOWN>; // NEXT LAYER / PREV LAYER
+                };   
+
+// ───────────────────────────────────────────────────────────────────────────
+
+                calli2_layer {
+// ┌───────────────────────────────────┐
+label= "CALLI2"                        ;
+// └───────────────────────────────────┘
+// ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
+// │    ---    │    ---    │    ---    │    ---    ││ REDO      ││           │
+// ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
+// │    ---    │ NEXT KEY  │    ---    │ PREV KEY  ││ TRANSFORM │
+// └───────────┼───────────┼───────────┼───────────┤├───────────┤
+//             │    ---    │    ---    │ CUT       ││    ---    │
+//             └───────────┴───────────┴───────────┘╰───────────╯
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
+
+    &trans      &trans      &trans      &trans       &kp LC(LS(Y)) &trans
+    &trans      &kp LC(RIGHT) &trans    &kp LC(LEFT) &c_trans 0 LC(T)
+                &trans        &trans    &kp LC(X)    &trans      
+                        >;
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
+                };
+
+
+// ───────────────────────────────────────────────────────────────────────────
 
                 krita1_layer {
 // ┌───────────────────────────────────┐
@@ -167,7 +256,7 @@ label= "KRITA1"                        ;
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &kp TAB
-    &lt KRITA2 L &kp RIGHT  &kp A    &kp LEFT     &k_sel 0 S
+    &lt KRITA2 L &kp RIGHT  &kp LALT    &kp LEFT     &k_sel 0 S
               &kp LC(LA(V)) &kp DEL     &kp LC(LA(C)) &k_plbs Z SPACE   
                         >;
             sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W))>; // NEW HOLD / DEL HOLD
@@ -190,59 +279,14 @@ label= "KRITA2"                        ;
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp TAB     &kp LC(L)     &kp LC(BSPC) &k_alay &kp LC(LS(Z)) &trans
-    &trans      &kp LC(RIGHT) &kp K     &kp LC(LEFT) &k_move 0 M
+    &trans      &kp LS(RIGHT) &kp K     &kp LS(LEFT) &k_move 0 M
                 &kp LC(LS(V)) &kp LS(DEL) &kp LC(C)  &k_trans 0 T        
                         >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
                 };
 
 
-// ───────────────────────────────────────────────────────────────────────────
-
-                heavy1_layer {
-// ┌───────────────────────────────────┐
-label= "HEAVY1"                        ;
-// └───────────────────────────────────┘
-// ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │           │           │ ROT/RESET │           ││ UNDO/SAVE ││           │
-// ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │ HEAVY2    │           │ PAN       │           ││           │
-// └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │           │ DEL       │           ││           │
-//             └───────────┴───────────┴───────────┘╰───────────╯
- bindings = <
-// ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
-
-    &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &trans
-    &lt HEAVY2 L &kp RIGHT  &kp LALT    &kp LEFT     &kp SPACE
-              &kp LA(LS(V)) &kp DEL     &kp LA(LS(C)) &k_sel 0 S             
-                        >;
-            sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
-                };   
-
-// ───────────────────────────────────────────────────────────────────────────
-
-
-                heavy2_layer {
-// ┌───────────────────────────────────┐
-label= "HEAVY2"                        ;
-// └───────────────────────────────────┘
-// ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │           │           │ ROT/RESET │           ││ UNDO/SAVE ││           │
-// ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │ HEAVY2    │           │ PAN       │           ││           │
-// └───────────┼───────────┼───────────┼───────────┤├───────────┤
-//             │           │ DEL       │           ││           │
-//             └───────────┴───────────┴───────────┘╰───────────╯
- bindings = <
-// ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
-
-    &kp LSHFT   &kp O       &k_rot      &kp I        &k_unsav 0 LC(Z) &trans
-    &trans      &kp RIGHT  &kp LALT    &kp LEFT     &kp SPACE
-              &kp LA(LS(V)) &kp DEL     &kp LA(LS(C)) &k_sel 0 S             
-                        >;
-            sensor-bindings = <&inc_dec_kp LC(W) LC(LS(W)) >; // NEW HOLD / DEL HOLD
-                };   
+// ─────────────────────────────────────────────────────────────────────────── 
 
         };
 };
