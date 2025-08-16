@@ -73,7 +73,7 @@
 
         c_sel: c_sel {
             compatible = "zmk,behavior-hold-tap";
-            label = "KRITA_SelectDeselect";
+            label = "CALLI_SelectDeselect";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
@@ -118,6 +118,28 @@
     };
 
     macros {
+        
+        c_split: c_split {
+            label = "c_split";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp B>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        c_mac: c_mac {
+            label = "ctrl_macro";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp MACRO_PLACEHOLDER>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
 
         k_save: k_save {
             label = "KRITA_Save";
@@ -208,7 +230,7 @@ label= "CALLI1"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp LC(RIGHT) &kp LC(B) &kp LC(LEFT) &kp LC(Y)    &none
+    &kp LSHFT   &kp LC(RIGHT) &c_split &kp LC(LEFT) &kp LC(Y)    &none
     &lt CALLI2 L &kp RIGHT  &kp RET     &kp LEFT     &c_sel 0 S
                 &kp LC(C)   &kp BSPC    &kp LC(V)    &kp SPACE   
                         >;
@@ -222,7 +244,7 @@ label= "CALLI1"                        ;
 label= "CALLI2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │ BT CLEAR  │    ---    │ TRANSFORM │    ---    ││ REDO      ││           │
+// │ BT CLEAR  │    ---    │ TRANSFORM │    ---    ││ REDO      ││ PLAYPAUSE │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │    ---    │ NEXT KEY  │    ---    │ PREV KEY  ││ TRANSFORM │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
@@ -231,11 +253,11 @@ label= "CALLI2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &bt BT_CLR  &trans      &kp LCTRL   &trans       &kp LC(LS(Y)) &trans
+    &bt BT_CLR  &trans      &kp LCTRL   &c_mac T    &kp LC(LS(Y)) &kp C_PP
     &trans      &kp LC(RIGHT) &kp T    &kp LC(LEFT) &c_trans 0 LC(T)
                 &kp LSHIFT   &kp LALT   &kp LGUI    &trans      
                         >;
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>; // VOL DOWN / VOL UP
                 };
 
 
