@@ -130,7 +130,7 @@
                 ;
         };
 
-        c_mac: c_mac {
+        c_m: c_m {
             label = "ctrl_macro";
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -138,6 +138,20 @@
                 = <&macro_press &kp LCTRL>
                 , <&macro_param_1to1>
                 , <&macro_tap &kp MACRO_PLACEHOLDER>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        cs_m: cs_m {
+            label = "ctrlshift_macro";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_press &kp LSHIFT>
+                , <&macro_param_1to1>
+                , <&macro_tap &kp MACRO_PLACEHOLDER>
+                , <&macro_release &kp LSHIFT>
                 , <&macro_release &kp LCTRL>
                 ;
         };
@@ -231,9 +245,9 @@ label= "CALLI1"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp LC(RIGHT) &c_split &kp LC(LEFT) &kp LC(Y)    &none
+    &kp LSHFT   &c_m RIGHT  &c_m B      &c_m LEFT    &c_m Y       &none
     &lt CALLI2 O &kp RIGHT  &kp RET     &kp LEFT     &c_sel 0 S
-                &kp LC(C)   &kp BSPC    &kp LC(V)    &kp SPACE   
+                &c_m C      &kp BSPC    &c_m V       &kp SPACE   
                         >;
             sensor-bindings = <&inc_dec_kp DOWN UP>; // NEXT LAYER / PREV LAYER
                 };   
@@ -254,9 +268,9 @@ label= "CALLI2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &bt BT_CLR  &kp LC(T)   &kp LCTRL   &c_mac T    &kp LC(LS(Y)) &kp C_PP
-    &trans      &kp LC(RIGHT) &kp T    &kp LC(LEFT) &c_trans 0 LC(T)
-                &kp LSHIFT   &kp LALT   &kp LGUI    &trans      
+    &bt BT_CLR  &trans      &c_m T      &trans       &cs_m Y &kp  C_PP
+    &trans      &c_m RIGHT  &kp T       &c_m LEFT    &c_m T
+                &trans      &trans      &c_m X       &trans      
                         >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>; // VOL DOWN / VOL UP
                 };
