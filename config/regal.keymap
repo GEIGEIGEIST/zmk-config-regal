@@ -136,8 +136,7 @@
             #binding-cells = <1>;
             bindings
                 = <&macro_press &kp LCTRL>
-                , <&macro_param_1to1>
-                , <&kp MACRO_PLACEHOLDER>
+                , <&macro_tap &kp>
                 , <&macro_release &kp LCTRL>
                 ;
         };
@@ -224,7 +223,7 @@ label= "CALLI1"                        ;
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
 // │ SHIFT     │ NEXT KEY  │ SPLIT LAY │ PREV KEY  ││ UNDO      ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
-// │ CALLI2    │ NXT FRAME │ RETURN    │ PRV FRAME ││ SEL/DSEL  │
+// │ L2/ONION  │ NXT FRAME │ RETURN    │ PRV FRAME ││ SEL/DSEL  │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
 //             │ PASTE     │ CLEAR     │ COPY      ││ PLAY      │
 //             └───────────┴───────────┴───────────┘╰───────────╯
@@ -232,7 +231,7 @@ label= "CALLI1"                        ;
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
     &kp LSHFT   &kp LC(RIGHT) &c_split &kp LC(LEFT) &kp LC(Y)    &none
-    &lt CALLI2 L &kp RIGHT  &kp RET     &kp LEFT     &c_sel 0 S
+    &lt CALLI2 O &kp RIGHT  &kp RET     &kp LEFT     &c_sel 0 S
                 &kp LC(C)   &kp BSPC    &kp LC(V)    &kp SPACE   
                         >;
             sensor-bindings = <&inc_dec_kp DOWN UP>; // NEXT LAYER / PREV LAYER
