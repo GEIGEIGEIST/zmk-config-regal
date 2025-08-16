@@ -199,7 +199,7 @@
 label= "CALLI1"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │ SHIFT     │ NEXT KEY  │ TRANSFORM │ PREV KEY  ││ UNDO      ││           │
+// │ SHIFT     │ NEXT KEY  │ SPLIT LAY │ PREV KEY  ││ UNDO      ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │ CALLI2    │ NXT FRAME │ RETURN    │ PRV FRAME ││ SEL/DSEL  │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
@@ -208,11 +208,11 @@ label= "CALLI1"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &kp LSHFT   &kp LC(RIGHT) &kp LC(T) &kp LC(LEFT) &kp LC(Y)    &none
+    &kp LSHFT   &kp LC(RIGHT) &kp LC(B) &kp LC(LEFT) &kp LC(Y)    &none
     &lt CALLI2 L &kp RIGHT  &kp RET     &kp LEFT     &c_sel 0 S
                 &kp LC(C)   &kp BSPC    &kp LC(V)    &kp SPACE   
                         >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>; // NEXT LAYER / PREV LAYER
+            sensor-bindings = <&inc_dec_kp DOWN UP>; // NEXT LAYER / PREV LAYER
                 };   
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -222,7 +222,7 @@ label= "CALLI1"                        ;
 label= "CALLI2"                        ;
 // └───────────────────────────────────┘
 // ┌───────────┬───────────┬───────────┬───────────┐╭───────────╮╭───────────╮
-// │    ---    │    ---    │    ---    │    ---    ││ REDO      ││           │
+// │ BT CLEAR  │    ---    │ TRANSFORM │    ---    ││ REDO      ││           │
 // ├───────────┼───────────┼───────────┼───────────┤├───────────┤╰───────────╯
 // │    ---    │ NEXT KEY  │    ---    │ PREV KEY  ││ TRANSFORM │
 // └───────────┼───────────┼───────────┼───────────┤├───────────┤
@@ -231,9 +231,9 @@ label= "CALLI2"                        ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷╷           ╷╷           ╷
 
-    &trans      &trans      &trans      &trans       &kp LC(LS(Y)) &trans
+    &bt BT_CLR  &trans      &kp LC(T)   &trans       &kp LC(LS(Y)) &trans
     &trans      &kp LC(RIGHT) &trans    &kp LC(LEFT) &c_trans 0 LC(T)
-                &trans        &trans    &kp LC(X)    &trans      
+                &kp LS(T)   &kp LA(T)   &kp LG(T)    &trans      
                         >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>; // NEXT LAYER / PREV LAYER
                 };
